@@ -1,13 +1,19 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StateMechine : MonoBehaviour
 {
-    private States currentState;
+    public State currentState;
+    IdelState idelState;
+    WalkingState walkingState;
     // Start is called before the first frame update
     void Start()
     {
+        idelState = new IdelState(this);
+        walkingState = new WalkingState(this);
+        currentState = idelState;
         currentState?.EnterState();
     }
 
@@ -16,7 +22,7 @@ public class StateMechine : MonoBehaviour
     {
         currentState?.UpdateState();
     }
-    public void SwitchState(States newState)
+    public void SwitchState(State newState)
     {
         currentState?.ExitState();
         currentState = newState;
