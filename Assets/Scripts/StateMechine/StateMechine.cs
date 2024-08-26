@@ -5,14 +5,9 @@ using UnityEngine;
 public class StateMechine : MonoBehaviour
 {
     private States currentState;
-    private PlayeIdelState idelState;
-    private PlayerWalkingState walkingState;
     // Start is called before the first frame update
     void Start()
     {
-        idelState = new PlayeIdelState(this);
-        walkingState = new PlayerWalkingState(this);
-        currentState = idelState;
         currentState?.EnterState();
     }
 
